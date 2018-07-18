@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import shop.calciostore.persistence.entities.Campaign;
 import shop.calciostore.persistence.repositories.CampaignRepository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,21 +20,24 @@ public class CampaignGateway {
         this.campaignRepository = campaignRepository;
     }
 
-    public List<Campaign> findAll(){
-         return campaignRepository.findAll();
+    public List<Campaign> findAll() {
+        return campaignRepository.findAll();
     }
 
-    public Campaign create(Campaign campaign){
+    public Campaign create(Campaign campaign) {
         //checar se existem datas que coincidem
         //caso sim, atualizá-las no dataEnd
-
+        List<Campaign> campaignsSameEndDate = campaignRepository.findAllByEndDateEquals(campaign.getEndDate());
+        if (campaignsSameEndDate.size() == 0) {
+            return campaignRepository.save(campaign);
+        }
+        campaignService.changeCampaignsWithSameEndDate(campaignsSameEndDate);
         return campaignRepository.save(campaign);
     }
 
-    public Campaign update(Long id,Campaign campaign){
+    public Campaign update(Long id, Campaign campaign) {
         Optional<Campaign> exists = campaignRepository.findById(id);
-        if(!exists.isPresent()){
-
+        if (!exists.isPresent()) {
 
 
         }
