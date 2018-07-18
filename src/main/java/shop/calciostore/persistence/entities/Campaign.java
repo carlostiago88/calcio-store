@@ -15,6 +15,10 @@ public class Campaign {
     private Date beginDate;
     private Date endDate;
 
+    public Campaign(){
+
+    }
+
     public Campaign(Long soccerTeamId) {
         this.soccerTeamId = soccerTeamId;
     }
