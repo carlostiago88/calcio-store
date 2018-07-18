@@ -1,0 +1,1 @@
+insert into soccer_team(id,name) values (1,'Corinthians');

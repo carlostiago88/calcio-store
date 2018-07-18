@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface CampaignRepository extends JpaRepository<Campaign,Long>{
 
     List<Campaign> findAll();
-    Optional<Campaign> findById(@Param("id") Long id);
+    Optional<Campaign> findOne(@Param("id") Long id);
     Campaign save(Campaign campaign);
 
 
