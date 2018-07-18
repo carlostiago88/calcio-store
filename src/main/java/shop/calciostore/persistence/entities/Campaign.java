@@ -2,7 +2,6 @@ package shop.calciostore.persistence.entities;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Objects;
 
 @Entity
 @Table(name = "campaign")
@@ -11,6 +10,7 @@ public class Campaign {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
     private Long soccerTeamId;
     private Date beginDate;
     private Date endDate;
@@ -19,8 +19,11 @@ public class Campaign {
 
     }
 
-    public Campaign(Long soccerTeamId) {
+    public Campaign(String name, Long soccerTeamId, Date beginDate, Date endDate) {
+        this.name = name;
         this.soccerTeamId = soccerTeamId;
+        this.beginDate = beginDate;
+        this.endDate = endDate;
     }
 
     public Long getId() {
@@ -29,6 +32,14 @@ public class Campaign {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Long getSoccerTeamId() {
@@ -53,21 +64,5 @@ public class Campaign {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Campaign)) return false;
-        Campaign campaign = (Campaign) o;
-        return Objects.equals(getId(), campaign.getId()) &&
-                Objects.equals(getSoccerTeamId(), campaign.getSoccerTeamId()) &&
-                Objects.equals(getBeginDate(), campaign.getBeginDate()) &&
-                Objects.equals(getEndDate(), campaign.getEndDate());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getSoccerTeamId(), getBeginDate(), getEndDate());
     }
 }

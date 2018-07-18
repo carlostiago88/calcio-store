@@ -8,6 +8,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import shop.calciostore.persistence.entities.Campaign;
 import shop.calciostore.persistence.repositories.CampaignRepository;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Optional;
 
 import static org.junit.Assert.assertNotNull;
@@ -26,13 +29,14 @@ public class CalcioStoreApplicationTests {
 
 	@Test
 	public void givenGenericEntityRepository_whenSaveAndRetreiveEntity_thenOK() {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+		Date date = new Date();
 		Campaign genericEntity = campaignRepository
-				.save(new Campaign(1L));
-		Optional<Campaign> foundEntity = campaignRepository
-				.findOne(genericEntity.getId());
+				.save(new Campaign("Time do Povo",1L,date,date));
+		Optional<Campaign> foundEntity = campaignRepository.findById(genericEntity.getId());
 
 		assertNotNull(foundEntity);
-		//assertEquals(genericEntity.getId(), foundEntity.get());
 	}
 
 }
