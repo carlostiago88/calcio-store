@@ -1,14 +1,15 @@
 package shop.calciostore.persistence.entities;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
-@Table(name = "campaign")
-public class Campaign {
+public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
     private Long soccerTeamId;
     private Date beginDate;

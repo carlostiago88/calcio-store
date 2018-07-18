@@ -30,6 +30,7 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
 	compile 'org.springframework.data:spring-data-jpa'
     compile 'org.springframework.boot:spring-boot-starter-data-jpa'
-    testCompile group: 'org.hsqldb', name: 'hsqldb', version: '2.4.1'
+    //runtime group: 'org.hsqldb', name: 'hsqldb', version: '2.4.1'
+	compile 'com.h2database:h2:1.4.197'
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
