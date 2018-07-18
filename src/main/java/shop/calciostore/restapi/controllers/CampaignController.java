@@ -32,7 +32,7 @@ public class CampaignController {
 
     @PostMapping("/v1/create")
     public ResponseEntity<Object> create(@RequestBody Campaign campaign){
-        return new ResponseEntity<>(campaignGateway.create(campaign),HttpStatus.CREATED);
+        return new ResponseEntity<>(campaignGateway.saveOrUpdate(campaign),HttpStatus.CREATED);
     }
 
     @PutMapping(path = "/v1/update/{id}")
@@ -43,7 +43,7 @@ public class CampaignController {
            return ResponseEntity.notFound().build();
        }
        campaign.setId(id);
-       return new ResponseEntity<>(campaignRepository.save(campaign),HttpStatus.OK);
+       return new ResponseEntity<>(campaignGateway.saveOrUpdate(campaign),HttpStatus.OK);
     }
 
     @DeleteMapping(path = "/v1/delete/{id}")
