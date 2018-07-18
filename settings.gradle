@@ -1,0 +1,5 @@
+rootProject.name = 'calcio-store'
+include 'application'
+include 'persistence'
+include 'restapi'
+
