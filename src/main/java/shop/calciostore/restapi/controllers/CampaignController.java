@@ -7,6 +7,8 @@ import shop.calciostore.persistence.entities.Campaign;
 import shop.calciostore.persistence.repositories.CampaignRepository;
 import shop.calciostore.usecase.campaign.CampaignGateway;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +18,7 @@ public class CampaignController {
 
     private CampaignGateway campaignGateway;
     private CampaignRepository campaignRepository;
+    private Date today = Calendar.getInstance().getTime();
 
     public CampaignController(CampaignGateway campaignGateway, CampaignRepository campaignRepository) {
         this.campaignRepository = campaignRepository;
@@ -24,12 +27,12 @@ public class CampaignController {
 
     @GetMapping("/v1")
     public List<Campaign> findAll(){
-        return campaignRepository.findAll();
+        return campaignRepository.findAllByEndDateIsGreaterThanEqual(today);
     }
 
     @PostMapping("/v1/create")
     public ResponseEntity<Object> create(@RequestBody Campaign campaign){
-        return new ResponseEntity<>(campaignRepository.save(campaign),HttpStatus.CREATED);
+        return new ResponseEntity<>(campaignGateway.create(campaign),HttpStatus.CREATED);
     }
 
     @PutMapping(path = "/v1/update/{id}")

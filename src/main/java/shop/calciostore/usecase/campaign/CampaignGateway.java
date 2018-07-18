@@ -24,6 +24,9 @@ public class CampaignGateway {
     }
 
     public Campaign create(Campaign campaign){
+        //checar se existem datas que coincidem
+        //caso sim, atualizá-las no dataEnd
+
         return campaignRepository.save(campaign);
     }
 
