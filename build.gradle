@@ -19,7 +19,7 @@ apply plugin: 'io.spring.dependency-management'
 group = 'shop'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
-mainClasseName = 'shop.calciostore.Boot'
+//mainClasseName = 'shop.calciostore.Boot'
 
 repositories {
 	mavenCentral()
@@ -29,5 +29,7 @@ repositories {
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
 	compile 'org.springframework.data:spring-data-jpa'
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    testCompile group: 'org.hsqldb', name: 'hsqldb', version: '2.4.1'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
