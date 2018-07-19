@@ -1,4 +1,5 @@
 test_db.mv.db
+test_db.trace.db
 .gradle
 /build/
 !gradle/wrapper/gradle-wrapper.jar
