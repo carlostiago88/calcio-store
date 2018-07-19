@@ -13,7 +13,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-
 @Repository
 @JaversSpringDataAuditable
 public interface CampaignRepository extends JpaRepository<Campaign,Long>{
