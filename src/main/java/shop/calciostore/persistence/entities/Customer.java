@@ -1,5 +1,6 @@
 package shop.calciostore.persistence.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,12 +12,13 @@ public class Customer {
     @Id
     @GeneratedValue
     private Long id;
-    private SoccerTeam soccerTeam;
-    private Date beginDate;
-    private Date endDate;
+    private Long soccerTeamId;
+    private String name;
+    private Date dateOfBirth;
+    @Column(length = 100, unique = true)
+    private String email;
 
     public Customer() {
-
     }
 
     public Long getId() {
@@ -27,27 +29,35 @@ public class Customer {
         this.id = id;
     }
 
-    public SoccerTeam getSoccerTeam() {
-        return soccerTeam;
+    public Long getSoccerTeamId() {
+        return soccerTeamId;
     }
 
-    public void setSoccerTeam(SoccerTeam soccerTeam) {
-        this.soccerTeam = soccerTeam;
+    public void setSoccerTeamId(Long soccerTeamId) {
+        this.soccerTeamId = soccerTeamId;
     }
 
-    public Date getBeginDate() {
-        return beginDate;
+    public String getName() {
+        return name;
     }
 
-    public void setBeginDate(Date beginDate) {
-        this.beginDate = beginDate;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Date getEndDate() {
-        return endDate;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
