@@ -26,6 +26,8 @@ public class Campaign {
         this.endDate = endDate;
     }
 
+
+
     public Long getId() {
         return id;
     }
