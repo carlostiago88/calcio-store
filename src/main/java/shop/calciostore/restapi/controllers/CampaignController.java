@@ -2,15 +2,14 @@ package shop.calciostore.restapi.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 import shop.calciostore.persistence.entities.Campaign;
+import shop.calciostore.persistence.entities.Customer;
 import shop.calciostore.persistence.repositories.CampaignRepository;
 import shop.calciostore.usecase.campaign.CampaignGateway;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping(path = "/campanhas")
@@ -25,6 +24,15 @@ public class CampaignController {
         this.campaignGateway = campaignGateway;
     }
 
+    @GetMapping("/v1/{id}")
+    public ResponseEntity<Object>find(@PathVariable("id") Long id){
+        Optional<Campaign> exists = campaignRepository.findById(id);
+        if(!exists.isPresent()){
+            return ResponseEntity.notFound().build();
+        }
+        return new ResponseEntity<>(campaignRepository.findById(id), HttpStatus.OK);
+    }
+
     @GetMapping("/v1")
     public List<Campaign> findAll(){
         return campaignRepository.findAllByEndDateIsGreaterThanEqual(today);
@@ -36,7 +44,6 @@ public class CampaignController {
     }
 
     @PutMapping(path = "/v1/update/{id}")
-    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Object> update(@PathVariable("id") Long id, @RequestBody Campaign campaign){
        Optional<Campaign> exists = campaignRepository.findById(id);
        if(!exists.isPresent()){

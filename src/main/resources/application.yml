@@ -1,0 +1,15 @@
+javers:
+  mappingStyle: FIELD
+  algorithm: SIMPLE
+  prettyPrint: true
+  typeSafeValues: false
+  newObjectSnapshot: false
+  packagesToScan:
+  auditableAspectEnabled: true
+  springDataAuditableRepositoryAspectEnabled: true
+  sqlSchemaManagementEnabled: true
+  prettyPrintDateFormats:
+    localDateTime: "dd MMM yyyy, HH:mm:ss"
+    zonedDateTime: "dd MMM yyyy, HH:mm:ssZ"
+    localDate: "dd MMM yyyy"
+    localTime: "HH:mm:ss"

@@ -1,6 +1,6 @@
 package shop.calciostore.persistence.repositories;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
+import org.javers.spring.annotation.JaversSpringDataAuditable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -13,7 +13,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+
 @Repository
+@JaversSpringDataAuditable
 public interface CampaignRepository extends JpaRepository<Campaign,Long>{
 
     @Modifying
