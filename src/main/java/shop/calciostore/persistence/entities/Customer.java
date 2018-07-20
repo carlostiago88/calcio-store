@@ -1,12 +1,13 @@
 package shop.calciostore.persistence.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
+@Table(name = "customers")
 public class Customer {
 
     @Id
@@ -15,8 +16,21 @@ public class Customer {
     private Long soccerTeamId;
     private String name;
     private Date dateOfBirth;
-    @Column(length = 100, unique = true)
+    @Column(unique = true)
     private String email;
+
+    @JsonIgnore
+    @OneToMany
+    @JoinColumn(name = "customer_id")
+    private List<CustomersCampaigns> customersCampaigns;
+
+    public List<CustomersCampaigns> getCustomersCampaigns() {
+        return customersCampaigns;
+    }
+
+    public void setCustomersCampaigns(List<CustomersCampaigns> customersCampaigns) {
+        this.customersCampaigns = customersCampaigns;
+    }
 
     public Customer() {
     }
@@ -60,4 +74,5 @@ public class Customer {
     public void setEmail(String email) {
         this.email = email;
     }
+
 }

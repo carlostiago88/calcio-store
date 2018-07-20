@@ -10,9 +10,10 @@ import shop.calciostore.persistence.entities.Customer;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer,Long>{
 
-
+    List<Customer> findAllBySoccerTeamId(Long id);
 }

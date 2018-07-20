@@ -1,19 +1,35 @@
 package shop.calciostore.persistence.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "campaign")
+@Table(name = "campaigns")
 public class Campaign {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
     private String name;
     private Long soccerTeamId;
     private Date beginDate;
     private Date endDate;
+
+    @JsonIgnore
+    @OneToMany
+    @JoinColumn(name = "campaign_id")
+    private List<CustomersCampaigns> customersCampaigns;
+
+    public List<CustomersCampaigns> getCustomersCampaigns() {
+        return customersCampaigns;
+    }
+
+    public void setCustomersCampaigns(List<CustomersCampaigns> customersCampaigns) {
+        this.customersCampaigns = customersCampaigns;
+    }
 
     public Campaign(){
 
@@ -25,8 +41,6 @@ public class Campaign {
         this.beginDate = beginDate;
         this.endDate = endDate;
     }
-
-
 
     public Long getId() {
         return id;
@@ -67,4 +81,6 @@ public class Campaign {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
+
+
 }
