@@ -7,23 +7,18 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.Temporal;
 import org.springframework.stereotype.Repository;
 import shop.calciostore.persistence.entities.Campaign;
+import shop.calciostore.persistence.entities.CustomersCampaigns;
 
 import javax.persistence.TemporalType;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Repository
 @JaversSpringDataAuditable
-public interface CampaignRepository extends JpaRepository<Campaign,Long>{
+public interface CustomersCampaignsRepository extends JpaRepository<CustomersCampaigns,Long>{
 
-    @Modifying
-    @Query("update Campaign c set c.endDate = ?1 where c.id = ?2")
-    int setEndDateFor(Date newEndDate, Long id);
-    List<Campaign> findAllByEndDateIsGreaterThanEqual(Date date);
-    List<Campaign> findAllByEndDateEquals(@Temporal(TemporalType.DATE) Date date);
-    Optional<Campaign> findById(Long id);
-    Boolean existsAllByEndDateEquals(Date date);
-    List<Campaign> findAllByEndDateIsGreaterThanEqualAndSoccerTeamIdEquals(Date date, Long id);
-
+   Boolean existsAllByCampaign_IdAndCustomer_Id(Long campaignId, Long customerId);
+   List<CustomersCampaigns> findAllByCustomer_Id(Long customerId);
 }

@@ -1,25 +1,25 @@
 package shop.calciostore.usecase.campaign;
 
 import org.javers.core.Javers;
-import org.javers.core.JaversBuilder;
 import org.springframework.stereotype.Service;
 import shop.calciostore.persistence.entities.Campaign;
 import shop.calciostore.persistence.repositories.CampaignRepository;
+import shop.calciostore.usecase.association.CustomersCampaignsGateway;
 
-import javax.swing.text.html.Option;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CampaignGateway {
 
     private CampaignService campaignService;
     private CampaignRepository campaignRepository;
+    private CustomersCampaignsGateway customersCampaignsGateway;
     private Javers javers;
 
-    public CampaignGateway(Javers javers,CampaignService campaignService, CampaignRepository campaignRepository) {
+    public CampaignGateway(CampaignService campaignService, CampaignRepository campaignRepository, CustomersCampaignsGateway customersCampaignsGateway, Javers javers) {
         this.campaignService = campaignService;
         this.campaignRepository = campaignRepository;
+        this.customersCampaignsGateway = customersCampaignsGateway;
         this.javers = javers;
     }
 
@@ -33,6 +33,7 @@ public class CampaignGateway {
             campaignService.changeCampaignsWithSameEndDate(campaignsSameEndDate);
         }
         Campaign campaignCreated = campaignRepository.save(campaign);
+        customersCampaignsGateway.matchCampaignCustomers(campaignCreated);
         javers.commit("user", campaignCreated);
         return campaignCreated;
     }
