@@ -4,7 +4,7 @@ import org.javers.core.Javers;
 import org.springframework.stereotype.Service;
 import shop.calciostore.persistence.entities.Customer;
 import shop.calciostore.persistence.repositories.CustomerRepository;
-import shop.calciostore.usecase.association.CustomersCampaignsGateway;
+import shop.calciostore.usecase.customersCampaigns.CustomersCampaignsGateway;
 
 import java.util.List;
 import java.util.Optional;

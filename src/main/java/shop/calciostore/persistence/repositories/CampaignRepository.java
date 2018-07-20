@@ -23,6 +23,7 @@ public interface CampaignRepository extends JpaRepository<Campaign,Long>{
     List<Campaign> findAllByEndDateIsGreaterThanEqual(Date date);
     List<Campaign> findAllByEndDateEquals(@Temporal(TemporalType.DATE) Date date);
     Optional<Campaign> findById(Long id);
+    Optional<Campaign> findByName(String name);
     Boolean existsAllByEndDateEquals(Date date);
     List<Campaign> findAllByEndDateIsGreaterThanEqualAndSoccerTeamIdEquals(Date date, Long id);
 
