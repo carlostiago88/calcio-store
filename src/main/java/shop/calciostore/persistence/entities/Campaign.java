@@ -1,7 +1,6 @@
 package shop.calciostore.persistence.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.List;
 public class Campaign {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Long soccerTeamId;

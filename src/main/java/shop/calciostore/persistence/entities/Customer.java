@@ -11,7 +11,7 @@ import java.util.List;
 public class Customer {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long soccerTeamId;
     private String name;
