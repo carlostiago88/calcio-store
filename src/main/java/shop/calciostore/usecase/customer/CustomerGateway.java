@@ -2,6 +2,7 @@ package shop.calciostore.usecase.customer;
 
 import org.javers.core.Javers;
 import org.springframework.stereotype.Service;
+import shop.calciostore.persistence.entities.Campaign;
 import shop.calciostore.persistence.entities.Customer;
 import shop.calciostore.persistence.repositories.CustomerRepository;
 import shop.calciostore.usecase.customersCampaigns.CustomersCampaignsGateway;
@@ -36,5 +37,9 @@ public class CustomerGateway {
         customersCampaignsGateway.matchCustomerCampaigns(customerCreated);
         javers.commit("user", customerCreated);
         return customerCreated;
+    }
+    public void deleteById(Customer customer){
+        customerRepository.deleteById(customer.getId());
+        javers.commit("user", customer);
     }
 }
