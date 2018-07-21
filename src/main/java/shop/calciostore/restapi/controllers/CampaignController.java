@@ -2,7 +2,6 @@ package shop.calciostore.restapi.controllers;
 
 import org.javers.core.Changes;
 import org.javers.core.Javers;
-import org.javers.core.JaversBuilder;
 import org.javers.repository.jql.QueryBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,13 +18,11 @@ public class CampaignController {
 
     private CampaignGateway campaignGateway;
     private CampaignRepository campaignRepository;
-    private Date today;
     private Javers javers;
 
     public CampaignController(Javers javers, CampaignGateway campaignGateway, CampaignRepository campaignRepository) {
         this.campaignRepository = campaignRepository;
         this.campaignGateway = campaignGateway;
-        this.today = Calendar.getInstance().getTime();
         this.javers = javers;
     }
 
@@ -40,7 +37,7 @@ public class CampaignController {
 
     @GetMapping("/v1")
     public List<Campaign> findAll(){
-        return campaignRepository.findAllByEndDateIsGreaterThanEqual(today);
+        return campaignGateway.findAll();
     }
 
     @PostMapping("/v1/create")

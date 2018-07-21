@@ -6,6 +6,8 @@ import shop.calciostore.persistence.entities.Campaign;
 import shop.calciostore.persistence.repositories.CampaignRepository;
 import shop.calciostore.usecase.customersCampaigns.CustomersCampaignsGateway;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,16 +18,18 @@ public class CampaignGateway {
     private CampaignRepository campaignRepository;
     private CustomersCampaignsGateway customersCampaignsGateway;
     private Javers javers;
+    private Date today;
 
     public CampaignGateway(CampaignService campaignService, CampaignRepository campaignRepository, CustomersCampaignsGateway customersCampaignsGateway, Javers javers) {
         this.campaignService = campaignService;
         this.campaignRepository = campaignRepository;
         this.customersCampaignsGateway = customersCampaignsGateway;
         this.javers = javers;
+        this.today = Calendar.getInstance().getTime();
     }
 
     public List<Campaign> findAll() {
-        return campaignRepository.findAll();
+        return campaignRepository.findAllByEndDateIsGreaterThanEqual(today);
     }
     public Optional<Campaign> findOne(Long id) {
         return campaignRepository.findById(id);
