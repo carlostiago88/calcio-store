@@ -14,6 +14,9 @@ public class CampaignService {
 
     private CampaignRepository campaignRepository;
 
+    public CampaignService() {
+    }
+
     public CampaignService(CampaignRepository campaignRepository) {
         this.campaignRepository = campaignRepository;
     }

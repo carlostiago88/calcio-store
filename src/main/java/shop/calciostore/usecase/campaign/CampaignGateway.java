@@ -4,9 +4,10 @@ import org.javers.core.Javers;
 import org.springframework.stereotype.Service;
 import shop.calciostore.persistence.entities.Campaign;
 import shop.calciostore.persistence.repositories.CampaignRepository;
-import shop.calciostore.usecase.association.CustomersCampaignsGateway;
+import shop.calciostore.usecase.customersCampaigns.CustomersCampaignsGateway;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CampaignGateway {
@@ -25,6 +26,9 @@ public class CampaignGateway {
 
     public List<Campaign> findAll() {
         return campaignRepository.findAll();
+    }
+    public Optional<Campaign> findOne(Long id) {
+        return campaignRepository.findById(id);
     }
 
     public Campaign saveOrUpdate(Campaign campaign) {

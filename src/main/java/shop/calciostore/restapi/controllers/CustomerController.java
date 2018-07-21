@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import shop.calciostore.persistence.entities.Customer;
-import shop.calciostore.usecase.association.CustomersCampaignsGateway;
+import shop.calciostore.usecase.customersCampaigns.CustomersCampaignsGateway;
 import shop.calciostore.usecase.customer.CustomerGateway;
 
 @RestController

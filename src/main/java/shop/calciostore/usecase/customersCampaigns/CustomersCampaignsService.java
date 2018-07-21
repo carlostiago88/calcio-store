@@ -1,4 +1,4 @@
-package shop.calciostore.usecase.association;
+package shop.calciostore.usecase.customersCampaigns;
 
 import org.springframework.stereotype.Service;
 import shop.calciostore.persistence.entities.Campaign;

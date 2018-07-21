@@ -35,7 +35,7 @@ public class CampaignController {
         if(!exists.isPresent()){
             return ResponseEntity.notFound().build();
         }
-        return new ResponseEntity<>(campaignRepository.findById(id), HttpStatus.OK);
+        return new ResponseEntity<>(campaignGateway.findOne(id), HttpStatus.OK);
     }
 
     @GetMapping("/v1")
