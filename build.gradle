@@ -19,7 +19,7 @@ apply plugin: 'io.spring.dependency-management'
 group = 'shop'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
-//mainClasseName = 'shop.calciostore.Boot'
+mainClasseName = 'shop.calciostore.Boot'
 
 repositories {
 	mavenCentral()
@@ -33,9 +33,7 @@ dependencies {
 	compile 'com.h2database:h2:1.4.197'
 	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.1'
     compile 'org.javers:javers-spring-boot-starter-sql:3.10.2'
-    // https://mvnrepository.com/artifact/org.hsqldb/hsqldb
-    compile group: 'org.hsqldb', name: 'hsqldb', version: '2.4.0'
-    // https://mvnrepository.com/artifact/org.javers/javers-persistence-sql
+    //compile group: 'org.hsqldb', name: 'hsqldb', version: '2.4.0'
     compile group: 'org.javers', name: 'javers-persistence-sql', version: '3.9.7'
     compile 'mysql:mysql-connector-java'
 

@@ -57,7 +57,7 @@ public class CustomerController {
         return new ResponseEntity<>(customerGateway.saveOrUpdate(customer),HttpStatus.OK);
     }
 
-    @DeleteMapping(path = "/v1/delete", value = "{id}")
+    @DeleteMapping(path = "/v1/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Object> delete(@PathVariable("id") Long id){
         Optional<Customer> customer = customerRepository.findById(id);
