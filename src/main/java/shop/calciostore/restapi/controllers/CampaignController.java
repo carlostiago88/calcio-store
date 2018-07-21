@@ -13,7 +13,7 @@ import shop.calciostore.usecase.campaign.CampaignGateway;
 import java.util.*;
 
 @RestController
-@RequestMapping(path = "/campanhas")
+@RequestMapping(path = "/campaigns")
 public class CampaignController {
 
     private CampaignGateway campaignGateway;
